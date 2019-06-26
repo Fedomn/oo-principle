@@ -2,7 +2,7 @@
 
 given: two length, one is 5 and the other is 6
 
-when: compare
+when: compare two length
 
 then: return '5 is shorter than 6'
 
@@ -10,7 +10,7 @@ then: return '5 is shorter than 6'
 
 given: tow length, one is 5 and the other is 3
 
-when: compare
+when: compare two length
 
 then: return '5 is longer than 3' 
 
@@ -18,6 +18,6 @@ then: return '5 is longer than 3'
 
 given: two length, one is 5 and the other is 5
 
-when: compare
+when: compare two length
 
 then: return '5 is as long as 5'
