@@ -1,9 +1,9 @@
 package com.tw.parking;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.Test;
 
 public class ParkingLotTest {
 
@@ -16,6 +16,7 @@ public class ParkingLotTest {
     Ticket ticket = parkingLot.park(car);
 
     assertEquals(ticket.getCarId(), car.getId());
+    assertEquals(parkingLot.getRemainingParkingSpace(), 9);
   }
 
   @Test
@@ -38,6 +39,7 @@ public class ParkingLotTest {
     Car pickedCar = parkingLot.pick(ticket);
 
     assertEquals(pickedCar.getId(), car.getId());
+    assertEquals(parkingLot.getRemainingParkingSpace(), 10);
   }
 
   @Test

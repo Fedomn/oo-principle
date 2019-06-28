@@ -19,16 +19,22 @@ public class ParkingLot {
   }
 
   private void checkParkingSpace() {
-    if (maxCapacity - carList.size() < 1) {
+    if (getRemainingParkingSpace() < 1) {
       throw new ParkingLotFullException("Parking lot space is full");
     }
   }
 
   public Car pick(Ticket ticket) {
-    Car car = carList.get(ticket.getCarId());
+    String carId = ticket.getCarId();
+    Car car = carList.get(carId);
     if (Objects.isNull(car)) {
-      throw new InvalidTicketException("Invalid ticket with carId: " + ticket.getCarId());
+      throw new InvalidTicketException("Invalid ticket with carId: " + carId);
     }
+    carList.remove(carId);
     return car;
+  }
+
+  public long getRemainingParkingSpace(){
+    return maxCapacity - carList.size();
   }
 }
