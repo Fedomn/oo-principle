@@ -1,40 +1,39 @@
 package com.tw.parking;
 
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ParkingLot {
 
   private final long maxCapacity;
-  private ConcurrentHashMap<String, Car> carList = new ConcurrentHashMap<>();
+  private ConcurrentHashMap<Ticket, Car> cars = new ConcurrentHashMap<>();
 
   public ParkingLot(long maxCapacity) {
     this.maxCapacity = maxCapacity;
   }
 
   public Ticket park(Car car) {
-    checkParkingSpace();
-    carList.put(car.getId(), car);
-    return new Ticket(car.getId());
+    if (notHasAvailableSpace()) {
+      throw new ParkingLotFullException();
+    }
+
+    Ticket ticket = new Ticket();
+    cars.put(ticket, car);
+    return ticket;
   }
 
-  private void checkParkingSpace() {
-    if (getRemainingParkingSpace() < 1) {
-      throw new ParkingLotFullException("Parking lot space is full");
-    }
+  private boolean notHasAvailableSpace() {
+    return maxCapacity - cars.size() <= 0;
   }
 
   public Car pick(Ticket ticket) {
-    String carId = ticket.getCarId();
-    Car car = carList.get(carId);
-    if (Objects.isNull(car)) {
-      throw new InvalidTicketException("Invalid ticket with carId: " + carId);
+    if (notContains(ticket)) {
+      throw new InvalidTicketException();
     }
-    carList.remove(carId);
-    return car;
+
+    return cars.get(ticket);
   }
 
-  public long getRemainingParkingSpace(){
-    return maxCapacity - carList.size();
+  private boolean notContains(Ticket ticket) {
+    return !cars.containsKey(ticket);
   }
 }

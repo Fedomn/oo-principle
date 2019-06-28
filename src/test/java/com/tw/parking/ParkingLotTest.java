@@ -1,9 +1,10 @@
 package com.tw.parking;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class ParkingLotTest {
 
@@ -11,41 +12,36 @@ public class ParkingLotTest {
   void
       should_return_the_car_a_parking_ticket_when_a_car_want_into_parking_lot_given_parking_lot_has_enough_space() {
     ParkingLot parkingLot = new ParkingLot(10);
-    Car car = new Car("car_id");
+    Car car = new Car();
 
     Ticket ticket = parkingLot.park(car);
 
-    assertEquals(ticket.getCarId(), car.getId());
-    assertEquals(parkingLot.getRemainingParkingSpace(), 9);
+    assertNotNull(ticket);
   }
 
   @Test
   void should_reject_the_car_when_a_car_want_into_parking_lot_given_parking_lot_space_is_full() {
     ParkingLot parkingLot = new ParkingLot(1);
-    Car firstCar = new Car("first_car_id");
-    Car secondCar = new Car("second_car_id");
+    parkingLot.park(new Car());
 
-    parkingLot.park(firstCar);
-
-    assertThrows(ParkingLotFullException.class, () -> parkingLot.park(secondCar));
+    assertThrows(ParkingLotFullException.class, () -> parkingLot.park(new Car()));
   }
 
   @Test
   void should_return_the_corresponding_car_when_parking_lot_get_the_ticket_given_a_ticket() {
     ParkingLot parkingLot = new ParkingLot(10);
-    Car car = new Car("car_id");
-    Ticket ticket = parkingLot.park(car);
+    Car parkedCar = new Car();
+    Ticket ticket = parkingLot.park(parkedCar);
 
     Car pickedCar = parkingLot.pick(ticket);
 
-    assertEquals(pickedCar.getId(), car.getId());
-    assertEquals(parkingLot.getRemainingParkingSpace(), 10);
+    assertEquals(pickedCar, parkedCar);
   }
 
   @Test
   void should_reject_the_ticket_when_parking_lot_get_the_ticket_given_a_invalid_ticket() {
     ParkingLot parkingLot = new ParkingLot(1);
-    Ticket invalidTicket = new Ticket("invalid-car-id");
+    Ticket invalidTicket = new Ticket();
 
     assertThrows(InvalidTicketException.class, () -> parkingLot.pick(invalidTicket));
   }
