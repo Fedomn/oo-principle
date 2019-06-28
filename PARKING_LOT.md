@@ -29,3 +29,11 @@ given: a invalid ticket
 when: parking lot get the ticket
 
 then: reject the ticket
+
+4. AC5
+
+given: a valid ticket
+
+when: parking lot get the ticket twice
+
+then: reject the second ticket

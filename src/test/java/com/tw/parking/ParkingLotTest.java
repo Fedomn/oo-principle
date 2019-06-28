@@ -45,4 +45,14 @@ public class ParkingLotTest {
 
     assertThrows(InvalidTicketException.class, () -> parkingLot.pick(invalidTicket));
   }
+
+  @Test
+  void should_reject_the_ticket_when_parking_lot_get_the_ticket_twice_given_a_valid_ticket() {
+    ParkingLot parkingLot = new ParkingLot(10);
+    Ticket ticket = parkingLot.park(new Car());
+
+    parkingLot.pick(ticket);
+
+    assertThrows(InvalidTicketException.class, () -> parkingLot.pick(ticket));
+  }
 }

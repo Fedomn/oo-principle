@@ -30,7 +30,7 @@ public class ParkingLot {
       throw new InvalidTicketException();
     }
 
-    return cars.get(ticket);
+    return cars.remove(ticket);
   }
 
   private boolean notContains(Ticket ticket) {
