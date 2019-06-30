@@ -10,7 +10,7 @@ public abstract class AbstractParkingBoy {
     this.parkingLots = Arrays.asList(parkingLots);
   }
 
-  public Car pick(Ticket ticket) {
+  public final Car pick(Ticket ticket) {
     ParkingLot parkingLot =
         parkingLots.stream()
             .filter(p -> p.isAvailableTicket(ticket))
