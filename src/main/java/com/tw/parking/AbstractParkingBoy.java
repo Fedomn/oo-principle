@@ -3,7 +3,7 @@ package com.tw.parking;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractParkingBoy {
+public abstract class AbstractParkingBoy implements IParkingLot {
   final List<ParkingLot> parkingLots;
 
   AbstractParkingBoy(ParkingLot... parkingLots) {
@@ -21,4 +21,9 @@ public abstract class AbstractParkingBoy {
   }
 
   public abstract Ticket park(Car car);
+
+  @Override
+  public boolean hasAvailableSpace() {
+    return parkingLots.stream().anyMatch(ParkingLot::hasAvailableSpace);
+  }
 }

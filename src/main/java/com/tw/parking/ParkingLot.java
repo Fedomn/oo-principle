@@ -2,7 +2,7 @@ package com.tw.parking;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ParkingLot {
+public class ParkingLot implements IParkingLot {
 
   private final long maxCapacity;
   private ConcurrentHashMap<Ticket, Car> cars = new ConcurrentHashMap<>();
@@ -37,7 +37,7 @@ public class ParkingLot {
     return !cars.containsKey(ticket);
   }
 
-  boolean hasAvailableSpace() {
+  public boolean hasAvailableSpace() {
     return !notHasAvailableSpace();
   }
 
