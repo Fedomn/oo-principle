@@ -30,7 +30,7 @@ when: parking lot get the ticket
 
 then: reject the ticket
 
-4. AC5
+5. AC5
 
 given: a valid ticket
 
