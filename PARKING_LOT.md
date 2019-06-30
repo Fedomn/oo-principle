@@ -37,3 +37,61 @@ given: a valid ticket
 when: parking lot get the ticket twice
 
 then: reject the second ticket
+
+---
+
+6. AC6
+
+given: Parking Boy有两个停车场，第一个停车场A和第二个停车场B，A和B都有空位
+
+when: Parking Boy停车
+
+then: 返回一张票给车，车停到第一个停车场A
+
+7. AC7
+
+given: Parking Boy有两个停车场，有第一个停车场A和第二个停车场B，A没空位，B有空位
+
+when: Parking Boy停车
+
+then: 返回一张票给车，车停到第二个停车场B
+
+8. AC8
+
+given: Parking Boy有两个停车场，有第一个停车场A和第二个停车场B，A有空位，B没空位
+
+when: Parking Boy停车
+
+then: 返回一张票给车，车停到第一个停车场A
+
+9. AC9
+
+given: Parking Boy有两个停车场，有第一个停车场A和第二个停车场B，A和B都没有空位
+
+when: Parking Boy停车
+
+then: 拒绝停车
+
+10. AC10
+
+given: 有效的票
+
+when: Parking Boy取车
+
+then: 取到对应的车
+
+11. AC11
+
+given: 无效的票
+
+when: 取车
+
+then: 拒绝取车
+
+12. AC12
+
+given: Parking Boy有两个停车场，有第一个停车场A和第二个停车场B，车停在B停车场并且用对应的票
+
+when: 取车
+
+then: 取到对应的车

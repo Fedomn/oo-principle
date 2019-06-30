@@ -36,4 +36,12 @@ public class ParkingLot {
   private boolean notContains(Ticket ticket) {
     return !cars.containsKey(ticket);
   }
+
+  boolean hasAvailableSpace() {
+    return !notHasAvailableSpace();
+  }
+
+  boolean isAvailableTicket(Ticket ticket) {
+    return cars.containsKey(ticket);
+  }
 }
