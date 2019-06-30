@@ -44,4 +44,8 @@ public class ParkingLot {
   boolean isAvailableTicket(Ticket ticket) {
     return cars.containsKey(ticket);
   }
+
+  long remainingAvailableSpaceNumber() {
+    return maxCapacity - cars.size();
+  }
 }

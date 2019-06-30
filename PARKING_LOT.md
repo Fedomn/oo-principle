@@ -95,3 +95,37 @@ given: Parking Boy有两个停车场，有第一个停车场A和第二个停车�
 when: 取车
 
 then: 取到对应的车
+
+---
+
+13. AC13
+
+given: Parking boy有两个停车场A和B，有第一个停车场A和第二个停车场B，并且B的空位比A的空位多
+
+when: 停车
+
+then: 返回一张票给车，车停到第一个停车场B
+
+14. AC14
+
+given: 有效的票
+
+when: Parking Boy取车
+
+then: 取到对应的车
+
+15. AC15
+
+given: 无效的票
+
+when: 取车
+
+then: 拒绝取车
+
+16. AC16
+
+given: Parking Boy有两个停车场，有第一个停车场A和第二个停车场B，车停在B停车场并且用对应的票
+
+when: 取车
+
+then: 取到对应的车
