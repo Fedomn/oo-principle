@@ -3,11 +3,11 @@ package com.tw.parking;
 import java.util.Arrays;
 import java.util.List;
 
-public class ParkingBoy {
+public class GraduateParkingBoy {
 
   private final List<ParkingLot> parkingLots;
 
-  public ParkingBoy(ParkingLot... parkingLots) {
+  public GraduateParkingBoy(ParkingLot... parkingLots) {
     this.parkingLots = Arrays.asList(parkingLots);
   }
 
