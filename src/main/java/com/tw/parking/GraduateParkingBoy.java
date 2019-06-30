@@ -1,16 +1,12 @@
 package com.tw.parking;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class GraduateParkingBoy {
-
-  private final List<ParkingLot> parkingLots;
+public class GraduateParkingBoy extends AbstractParkingBoy {
 
   public GraduateParkingBoy(ParkingLot... parkingLots) {
-    this.parkingLots = Arrays.asList(parkingLots);
+    super(parkingLots);
   }
 
+  @Override
   public Ticket park(Car car) {
     for (ParkingLot parkingLot : parkingLots) {
       if (parkingLot.hasAvailableSpace()) {
@@ -18,14 +14,5 @@ public class GraduateParkingBoy {
       }
     }
     throw new ParkingLotFullException();
-  }
-
-  public Car pick(Ticket ticket) {
-    for (ParkingLot parkingLot : parkingLots) {
-      if (parkingLot.isAvailableTicket(ticket)) {
-        return parkingLot.pick(ticket);
-      }
-    }
-    throw new InvalidTicketException();
   }
 }
