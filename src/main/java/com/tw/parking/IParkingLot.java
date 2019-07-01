@@ -8,4 +8,6 @@ public interface IParkingLot {
   Car pick(Ticket ticket);
 
   boolean hasAvailableSpace();
+
+  boolean isAvailableTicket(Ticket ticket);
 }

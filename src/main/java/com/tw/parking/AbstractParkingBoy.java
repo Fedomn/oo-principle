@@ -26,4 +26,9 @@ public abstract class AbstractParkingBoy implements IParkingLot {
   public boolean hasAvailableSpace() {
     return parkingLots.stream().anyMatch(ParkingLot::hasAvailableSpace);
   }
+
+  @Override
+  public boolean isAvailableTicket(Ticket ticket) {
+    return parkingLots.stream().anyMatch(parkingLot -> parkingLot.isAvailableTicket(ticket));
+  }
 }

@@ -19,4 +19,14 @@ public class ParkingManager {
 
     return firstAvailableParkingLot.park(car);
   }
+
+  public Car pick(Ticket ticket) {
+    IParkingLot parkingLot =
+        parkingLots.stream()
+            .filter(p -> p.isAvailableTicket(ticket))
+            .findFirst()
+            .orElseThrow(InvalidTicketException::new);
+
+    return parkingLot.pick(ticket);
+  }
 }

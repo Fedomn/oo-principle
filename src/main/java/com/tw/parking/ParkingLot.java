@@ -41,7 +41,7 @@ public class ParkingLot implements IParkingLot {
     return !notHasAvailableSpace();
   }
 
-  boolean isAvailableTicket(Ticket ticket) {
+  public boolean isAvailableTicket(Ticket ticket) {
     return cars.containsKey(ticket);
   }
 
